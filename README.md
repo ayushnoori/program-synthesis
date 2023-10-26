@@ -1,6 +1,6 @@
 # Bottom-Up Enumerative Synthesis
 
-Completed for CS252R at the Harvard John A. Paulson School of Engineering and Applied Sciences, taught Fall 2023. 
+Completed for [CS252R: Program Synthesis](https://synthesis.metareflection.club/) at the Harvard John A. Paulson School of Engineering and Applied Sciences, taught Fall 2023 by Prof. Nada Amin.
 
 ## 🛠️ Inductive Program Synthesis
 
