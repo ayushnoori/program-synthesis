@@ -1,2 +1,5 @@
-# cs252r
-CS252R: Program Synthesis at Harvard College, Fall 2023.
+# CS252R: Program Synthesis
+
+
+## PSET 1: Bottom-Up Enumerative Synthesis
+
