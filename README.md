@@ -21,7 +21,7 @@ Synthesize(inputs, outputs):
 
 ## 👨🏽‍💻 Project Description
 
-Here, we implement the non-ML subset of BUSTLE, the algorithm proposed by [Odena *et al.* (2021)](https://arxiv.org/abs/2007.14381). That is, we implement bottom-up enumerative search for simple compound expressions, excluding conditionals, recursion and loops.
+Here, we implement the non-ML subset of BUSTLE, the algorithm proposed by [Odena *et al.* (2021)](https://arxiv.org/abs/2007.14381). That is, we implement bottom-up enumerative search for simple compound expressions, excluding conditionals, recursion, and loops. The implementation is generic and flexibly supports multiple target languages. Arithmetic and string manipulations are natively supported, defined in `arithmetic.py` and `string.py`, respectively.
 
 To run the program, run `synthesis.py` with the following arguments:
 ```
