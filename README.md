@@ -58,12 +58,12 @@ virtualenv synthesis_env
 source synthesis_env/bin/activate
 ```
 
-Then, install all required packages. The script `setup.sh` will activate the virtual environment. At the command line, run:
+Then, install all required packages. To activate the virtual environment, run at the command line:
 ```
 source setup.sh
 ```
 
-To launch a Jupyter notebook, run `setup_jupyter.sh` at the command line:
+To launch a Jupyter notebook, run:
 ```
 source setup_jupyter.sh
 ```
