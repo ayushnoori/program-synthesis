@@ -4,7 +4,7 @@
 
 Completed for [CS252R: Program Synthesis](https://synthesis.metareflection.club/) at the Harvard John A. Paulson School of Engineering and Applied Sciences, taught Fall 2023 by Prof. Nada Amin.
 
-## 🛠️ Inductive Synthesis
+## 🛠️ Background
 
 The following notes are adapted from [*Introduction to Program Synthesis*](http://people.csail.mit.edu/asolar/SynthesisCourse/TOC.htm) by Armando Solar-Lezama.
 
@@ -24,6 +24,30 @@ Synthesize(inputs, outputs):
 ## 👨🏽‍💻 Project Description
 
 Here, we implement the non-ML subset of BUSTLE, the algorithm proposed by Odena *et al.* (2021). That is, we implement bottom-up enumerative search for simple compound expressions, excluding conditionals, recursion and loops.
+
+To run the program, run `synthesizer.py` with the following arguments:
+```
+usage: synthesizer.py [-h] --domain {arithmetic,string} --examples {addition,subtraction,multiplication,division}
+                      [--max_weight MAX_WEIGHT]
+
+Bottom-up enumerative synthesis in Python.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --domain {arithmetic,string}
+                        Domain of synthesis (either "arithmetic" or "string").
+  --examples {addition,subtraction,multiplication,division}
+                        Examples to synthesize program from. Must be a valid key in the "examples" dictionary.
+  --max_weight MAX_WEIGHT
+                        Maximum weight of programs to consider before terminating search.
+```
+
+For example, to synthesize programs in the arithmetic domain from the addition examples, run:
+```
+python3 synthesizer.py --domain arithmetic --examples addition
+```
+
+To add additional input-output examples, modify `examples.py`. Add a new key to the dictionary `examples`` and set the value to be a list of tuples.
 
 ## 🙏🏽 Acknowledgements
 

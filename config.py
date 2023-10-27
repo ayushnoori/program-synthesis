@@ -20,6 +20,6 @@ else:
     PROJECT_DIR = Path('/Users/an583/Library/CloudStorage/OneDrive-Personal/Academic/College/Junior Year/Fall Term/COMPSCI 252R/cs252r')
 
 # define project configuration variables
-DATA_DIR = PROJECT_DIR / 'Data'
-RESULTS_DIR = PROJECT_DIR / 'Results'
+# DATA_DIR = PROJECT_DIR / 'Data'
+# RESULTS_DIR = PROJECT_DIR / 'Results'
 SEED = 42

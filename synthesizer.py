@@ -13,11 +13,7 @@ import argparse
 
 # import examples
 from examples import examples
-
-# import project config file
-import sys
-sys.path.append('..')
-import project_config
+import config
 
 
 def parse_args(examples):
@@ -39,7 +35,8 @@ def parse_args(examples):
                         choices=examples.keys(),
                         help='Examples to synthesize program from. Must be a valid key in the "examples" dictionary.')
     
-    parser.add_argument('--max_levels', type=int, required=False, default=3)
+    parser.add_argument('--max_weight', type=int, required=False, default=3,
+                        help='Maximum weight of programs to consider before terminating search.')
 
     args = parser.parse_args()
     return args
@@ -51,7 +48,7 @@ if __name__ == '__main__':
     args = parse_args(examples)
     print(args.domain)
     print(args.examples_key)
-    print(args.max_levels)
+    print(args.max_weight)
 
     # run bottom-up enumerative synthesis
     # run_synthesizer(args)
