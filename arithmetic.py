@@ -16,6 +16,7 @@ class IntegerVariable:
         # self.value = None           # value of the variable, initially None
         self.position = position    # zero-indexed position of the variable in the arguments to program
         self.type = int             # type of the variable
+        self.weight = 1             # weight of the variable
 
     # def assign(self, value):
     #     self.value = value
@@ -57,6 +58,7 @@ class IntegerConstant:
     def __init__(self, value):
         self.value = value  # value of the constant
         self.type = int     # type of the constant
+        self.weight = 1     # weight of the constant
 
     def evaluate(self, input = None):
         return self.value

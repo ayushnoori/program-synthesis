@@ -24,10 +24,12 @@ class OperatorNode:
         add_node = OperatorNode(Add(), [IntegerVariable(0), IntegerConstant(5)])
         multiply_node.evaluate([7]) # returns 24
     '''
-    
+
     def __init__(self, operator, children):
-        self.operator = operator  # Operator object (e.g., Add, Subtract, etc.)
+        self.operator = operator  # operator object (e.g., Add, Subtract, etc.)
         self.children = children  # list of children nodes (operands)
+        self.weight = operator.weight + sum([child.weight for child in children])  # weight of the node
+        self.type = operator.return_type  # return type of the operator object
 
     def evaluate(self, input = None):
 
