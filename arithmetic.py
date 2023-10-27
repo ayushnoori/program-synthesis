@@ -20,6 +20,12 @@ class IntegerVariable:
     def assign(self, value):
         self.value = value
 
+    def evaluate(self):
+        return self.value
+    
+    def str(self):
+        return f"x{self.position}"
+
 class IntegerConstant:
     '''
     Class to represent an integer constant.
@@ -27,6 +33,12 @@ class IntegerConstant:
     def __init__(self, value):
         self.value = value  # value of the constant
         self.type = int     # type of the constant
+
+    def evaluate(self):
+        return self.value
+    
+    def str(self):
+        return str(self.value)
 
 class Add:
     '''
@@ -38,11 +50,11 @@ class Add:
         self.return_type = int          # return type
         self.weight = 1                 # weight
 
-    def __call__(self, x, y):
+    def evaluate(self, x, y):
         return x + y
     
-    def str(x, y):
-        return f"{x} + {y}"
+    def str(self, x, y):
+        return f"({x} + {y})"
 
 class Subtract:
     '''
@@ -54,11 +66,11 @@ class Subtract:
         self.return_type = int          # return type
         self.weight = 1                 # weight
 
-    def __call__(self, x, y):
+    def evaluate(self, x, y):
         return x - y
     
-    def str(x, y):
-        return f"{x} - {y}"
+    def str(self, x, y):
+        return f"({x} - {y})"
     
 class Multiply:
     '''
@@ -70,11 +82,11 @@ class Multiply:
         self.return_type = int          # return type
         self.weight = 1                 # weight
 
-    def __call__(self, x, y):
+    def evaluate(self, x, y):
         return x * y
     
-    def str(x, y):
-        return f"{x} * {y}" 
+    def str(self, x, y):
+        return f"({x} * {y})" 
 
 class Divide:
     '''
@@ -86,14 +98,14 @@ class Divide:
         self.return_type = int          # return type
         self.weight = 1                 # weight
 
-    def __call__(self, x, y):
+    def evaluate(self, x, y):
         try: # check for division by zero error
             return x / y
         except ZeroDivisionError:
             return None
     
-    def str(x, y):
-        return f"{x} / {y}"
+    def str(self, x, y):
+        return f"({x} / {y})"
 
 
 '''
