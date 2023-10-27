@@ -42,12 +42,31 @@ optional arguments:
                         Maximum weight of programs to consider before terminating search.
 ```
 
-For example, to synthesize programs in the arithmetic domain from the addition examples, run:
+For example, to synthesize programs in the arithmetic domain from the addition input-output examples, run:
 ```
 python3 synthesizer.py --domain arithmetic --examples addition
 ```
 
 To add additional input-output examples, modify `examples.py`. Add a new key to the dictionary `examples`` and set the value to be a list of tuples.
+
+## 🔮 Virtual Environment
+
+To create a virtual environment, run:
+```
+conda deactivate
+virtualenv synthesis_env
+source synthesis_env/bin/activate
+```
+
+Then, install all required packages. The script `setup.sh` will activate the virtual environment. At the command line, run:
+```
+source setup.sh
+```
+
+To launch a Jupyter notebook, run `setup_jupyter.sh` at the command line:
+```
+source setup_jupyter.sh
+```
 
 ## 🙏🏽 Acknowledgements
 
