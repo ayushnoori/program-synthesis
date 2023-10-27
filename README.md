@@ -2,7 +2,7 @@
 
 🚨🚨PLEASE DO NOT GRADE YET🚨🚨
 
-Completed for [CS252R: Program Synthesis](https://synthesis.metareflection.club/) at the Harvard John A. Paulson School of Engineering and Applied Sciences, taught Fall 2023 by Prof. Nada Amin.
+Completed for [CS252R: Program Synthesis](https://synthesis.metareflection.club/) at the Harvard John A. Paulson School of Engineering and Applied Sciences, taught in Fall 2023 by Prof. Nada Amin.
 
 ## 🛠️ Background
 
@@ -37,7 +37,7 @@ optional arguments:
   --domain {arithmetic,string}
                         Domain of synthesis (either "arithmetic" or "string").
   --examples {addition,subtraction,multiplication,division}
-                        Examples to synthesize program from. Must be a valid key in the "examples" dictionary.
+                        Examples to synthesize program from. Must be a valid key in the "example_set" dictionary.
   --max_weight MAX_WEIGHT
                         Maximum weight of programs to consider before terminating search.
 ```
@@ -47,7 +47,7 @@ For example, to synthesize programs in the arithmetic domain from the addition i
 python3 synthesizer.py --domain arithmetic --examples addition
 ```
 
-To add additional input-output examples, modify `examples.py`. Add a new key to the dictionary `examples`` and set the value to be a list of tuples.
+To add additional input-output examples, modify `examples.py`. Add a new key to the dictionary `example_set` and set the value to be a list of tuples.
 
 ## 🔮 Virtual Environment
 
