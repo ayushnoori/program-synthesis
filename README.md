@@ -42,12 +42,16 @@ optional arguments:
 For example, to synthesize programs in the arithmetic domain from the addition input-output examples, run:
 ```
 python synthesis.py --domain arithmetic --examples addition
+
+Synthesis Log:
 - Extracted 9 constants from examples.
 - Searching level 2 with 9 primitives.
-Program found in 0.0116s.
-Program: (x0 + x1)
-Program weight: 3
-Program return type: int
+
+Synthesis Results:
+- Program found in 0.0033s.
+- Program: (x0 + x1)
+- Program weight: 3
+- Program return type: int
 ```
 
 We could also try a more involved example in the string domain:
