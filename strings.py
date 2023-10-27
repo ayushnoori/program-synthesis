@@ -1,20 +1,20 @@
 '''
-ARTHIMETIC OPERATORS
-This file contains Python classes that define the arithmetic operators for program synthesis.
+STRING OPERATORS
+This file contains Python classes that define the string operators for program synthesis.
 '''
 
 '''
 CLASS DEFINITIONS
 ''' 
 
-class IntegerVariable:
+class StringVariable:
     '''
-    Class to represent an integer variable. Note that position is the position of the variable in the input.
-    For example, if the input is [4, 5, 6] and the variable is the third element (i.e., 6), then position = 2.
+    Class to represent an string variable. Note that position is the position of the variable in the input.
+    For example, if the input is ["a", "b", "c"] and the variable is the third element (i.e., "c"), then position = 2.
     '''
     def __init__(self, position):
         self.position = position    # zero-indexed position of the variable in the arguments to program
-        self.type = int             # type of the variable
+        self.type = str             # type of the variable
         self.weight = 1             # weight of the variable
 
     def evaluate(self, input = None):
@@ -40,13 +40,13 @@ class IntegerVariable:
     def str(self):
         return f"x{self.position}"
 
-class IntegerConstant:
+class StringConstant:
     '''
-    Class to represent an integer constant.
+    Class to represent an string constant.
     '''
     def __init__(self, value):
         self.value = value  # value of the constant
-        self.type = int     # type of the constant
+        self.type = str     # type of the constant
         self.weight = 1     # weight of the constant
 
     def evaluate(self, input = None):
@@ -55,72 +55,53 @@ class IntegerConstant:
     def str(self):
         return str(self.value)
 
-class Add:
+class Concatenate:
     '''
-    Operator to add two numerical values.
+    Operator to concatenate two string values.
     '''
     def __init__(self):
         self.arity = 2                  # number of arguments
-        self.arg_types = [int, int]     # argument types
-        self.return_type = int          # return type
+        self.arg_types = [str, str]     # argument types
+        self.return_type = str          # return type
         self.weight = 1                 # weight
 
     def evaluate(self, x, y, input = None):
         return x + y
     
     def str(self, x, y):
-        return f"({x} + {y})"
+        return f"Concat({x}, {y})"
 
-class Subtract:
+class Left:
     '''
-    Operator to subtract two numerical values.
+    Operator to get left substring.
     '''
     def __init__(self):
         self.arity = 2                  # number of arguments
-        self.arg_types = [int, int]     # argument types
-        self.return_type = int          # return type
+        self.arg_types = [str, int]     # argument types
+        self.return_type = str          # return type
         self.weight = 1                 # weight
 
     def evaluate(self, x, y, input = None):
-        return x - y
+        return x[:y]
     
     def str(self, x, y):
-        return f"({x} - {y})"
+        return f"Left({x}, {y})"
     
-class Multiply:
+class Right:
     '''
-    Operator to multiply two numerical values.
+    Operator to get right substring.
     '''
     def __init__(self):
         self.arity = 2                  # number of arguments
-        self.arg_types = [int, int]     # argument types
-        self.return_type = int          # return type
+        self.arg_types = [str, int]     # argument types
+        self.return_type = str          # return type
         self.weight = 1                 # weight
 
     def evaluate(self, x, y, input = None):
-        return x * y
+        return x[(y * -1):]
     
     def str(self, x, y):
-        return f"({x} * {y})" 
-
-class Divide:
-    '''
-    Operator to divide two numerical values.
-    '''
-    def __init__(self):
-        self.arity = 2                  # number of arguments
-        self.arg_types = [int, int]     # argument types
-        self.return_type = int          # return type
-        self.weight = 1                 # weight
-
-    def evaluate(self, x, y, input = None):
-        try: # check for division by zero error
-            return x / y
-        except ZeroDivisionError:
-            return None
-    
-    def str(self, x, y):
-        return f"({x} / {y})"
+        return f"Right({x}, {y})" 
 
 
 '''
@@ -128,4 +109,4 @@ GLOBAL CONSTANTS
 ''' 
 
 # define operators
-arithmetic_operators = [Add(), Subtract(), Multiply(), Divide()]
+string_operators = [Concatenate(), Left(), Right()]

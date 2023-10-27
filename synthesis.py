@@ -15,6 +15,7 @@ import time
 
 # import examples
 from arithmetic import *
+from strings import *
 from abstract_syntax_tree import *
 from examples import example_set, check_examples
 import config
@@ -40,7 +41,7 @@ def parse_args():
                         choices=example_set.keys(),
                         help='Examples to synthesize program from. Must be a valid key in the "example_set" dictionary.')
     
-    parser.add_argument('--max_weight', type=int, required=False, default=3,
+    parser.add_argument('--max-weight', type=int, required=False, default=3,
                         help='Maximum weight of programs to consider before terminating search.')
 
     args = parser.parse_args()
@@ -74,7 +75,7 @@ def extract_constants(examples):
         if type(input) == int:
             constants.append(IntegerConstant(input))
         elif type(input) == str:
-            # constants.append(StringConstant(input))
+            constants.append(StringConstant(input))
             pass
         else:
             raise Exception("Input of unknown type.")
@@ -87,8 +88,7 @@ def extract_constants(examples):
         if arg == int:
             variables.append(IntegerVariable(position))
         elif arg == str:
-            # variables.append(StringVariable(position))
-            pass
+            variables.append(StringVariable(position))
         else:
             raise Exception("Input of unknown type.")
 
@@ -133,10 +133,16 @@ def run_synthesizer(args):
     # extract constants from examples
     program_bank = extract_constants(examples)
     program_bank_str = [p.str() for p in program_bank]
+    print("\nSynthesis Log:")
     print(f"- Extracted {len(program_bank)} constants from examples.")
 
     # define operators
-    operators = arithmetic_operators
+    if args.domain == "arithmetic":
+        operators = arithmetic_operators
+    elif args.domain == "string":
+        operators = string_operators
+    else:
+        raise Exception('Domain not recognized. Must be either "arithmetic" or "string".')
 
     # iterate over each level
     for weight in range(2, args.max_weight):
@@ -200,10 +206,11 @@ if __name__ == '__main__':
     elapsed_time = round(end_time - start_time, 4)
 
     # check if program was found
+    print("\nSynthesis Results:")
     if program is None:
-        print(f"Max weight of {args.max_weight} reached, no program found in {elapsed_time}s.")
+        print(f"- Max weight of {args.max_weight} reached, no program found in {elapsed_time}s.")
     else:
-        print(f"Program found in {elapsed_time}s.")
-        print(f"Program: {program.str()}")
-        print(f"Program weight: {program.weight}")
-        print(f"Program return type: {program.type.__name__}")
+        print(f"- Program found in {elapsed_time}s.")
+        print(f"- Program: {program.str()}")
+        print(f"- Program weight: {program.weight}")
+        print(f"- Program return type: {program.type.__name__}")

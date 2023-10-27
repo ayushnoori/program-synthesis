@@ -35,13 +35,19 @@ optional arguments:
                         Domain of synthesis (either "arithmetic" or "string").
   --examples {addition,subtraction,multiplication,division}
                         Examples to synthesize program from. Must be a valid key in the "example_set" dictionary.
-  --max_weight MAX_WEIGHT
+  --max-weight MAX_WEIGHT
                         Maximum weight of programs to consider before terminating search.
 ```
 
 For example, to synthesize programs in the arithmetic domain from the addition input-output examples, run:
 ```
-python3 synthesis.py --domain arithmetic --examples addition
+python synthesis.py --domain arithmetic --examples addition
+- Extracted 9 constants from examples.
+- Searching level 2 with 9 primitives.
+Program found in 0.0116s.
+Program: (x0 + x1)
+Program weight: 3
+Program return type: int
 ```
 
 To add additional input-output examples, modify `examples.py`. Add a new key to the dictionary `example_set` and set the value to be a list of tuples.

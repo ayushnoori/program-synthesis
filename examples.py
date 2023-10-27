@@ -11,13 +11,18 @@ function in the synthesizer.
 
 # define examples
 example_set = {
-    # arithmetic examples
+    # basic arithmetic examples
     'addition': [([7, 2], 9), ([8, 1], 9), ([3, 9], 12), ([5, 8], 13)], # ([4, 6], 10), 
     'subtraction': [([9, 2], 7), ([6, 1], 5), ([7, 3], 4), ([8, 4], 4), ([10, 2], 8)],
     'multiplication': [([2, 3], 6), ([4, 5], 20), ([7, 8], 56), ([9, 2], 18), ([3, 4], 12)],
-    'division': [([6, 2], 3), ([8, 4], 2), ([9, 3], 3), ([10, 5], 2), ([12, 6], 2)]
+    'division': [([6, 2], 3), ([8, 4], 2), ([9, 3], 3), ([10, 5], 2), ([12, 6], 2)],
+
+    # complex arithmetic examples
+    'add_5_multiply_2': [([1, 2], 12), ([3, 4], 22), ([5, 6], 32), ([7, 8], 42), ([9, 10], 52)],
+    'multiply_add_9': [([1, 2], 11), ([3, 4], 21), ([5, 6], 39), ([7, 8], 65), ([9, 10], 9)],
 
     # string examples
+    'concatenate': [(["a", "b"], "ab"), (["c", "d"], "cd"), (["e", "f"], "ef")],
 
     # custom user examples
 }
