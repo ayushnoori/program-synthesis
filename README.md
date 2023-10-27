@@ -21,7 +21,7 @@ Synthesize(inputs, outputs):
 
 ## 👨🏽‍💻 Project Description
 
-Here, we implement the non-ML subset of BUSTLE, the algorithm proposed by Odena *et al.* (2021). That is, we implement bottom-up enumerative search for simple compound expressions, excluding conditionals, recursion and loops.
+Here, we implement the non-ML subset of BUSTLE, the algorithm proposed by [Odena *et al.* (2021)](https://arxiv.org/abs/2007.14381). That is, we implement bottom-up enumerative search for simple compound expressions, excluding conditionals, recursion and loops.
 
 To run the program, run `synthesis.py` with the following arguments:
 ```
@@ -58,6 +58,12 @@ The most important data structure in this implementation is the abstract syntax 
 
 At program evaluation time, the AST is evaluated from the bottom up. That is, the operands are evaluated first, and then the operator is evaluated on the operands. This is implemented in the `evaluate` method of the `OperatorNode` class. In the case of integers, variable inputs are represented by the `IntegerVariable` class in `arithmetic.py`. When input is not `None`, input type checking and validation is performed by the `evaluate` function in this class.
 
+The pseudocode for the bottom-up synthesis algorithm is reproduced below from [Odena *et al.* (2021)](https://arxiv.org/abs/2007.14381):
+
+<img width="1494" alt="image" src="https://github.com/ayushnoori/program-synthesis/assets/43010710/117e7797-11af-4b72-b5f4-dda95eb2260f">
+
+Note that we do not consider the lines colored in blue (*i.e.*, lines 4, 16, and 17). For details on machine learning-guided bottom-up search, please see the [BUSTLE paper](https://arxiv.org/abs/2007.14381).
+
 ## 🔮 Virtual Environment
 
 To create a virtual environment, run:
@@ -81,6 +87,10 @@ source setup_jupyter.sh
 
 I thank [Tyler Holloway](mailto:tylerholloway@g.harvard.edu), teaching fellow in CS252R, for her guidance in completing this implementation of bottom-up enumerative program synthesis.
 
+## 📫 Contact
+
+Any questions? Please feel free to reach out to Ayush Noori at [anoori@college.harvard.edu](mailto:anoori@college.harvard.edu).
+
 ## 📖 References
 
-1. Odena, A. *et al.* BUSTLE: Bottom-Up Program Synthesis Through Learning-Guided Exploration. in *9th International Conference on Learning Representations*; 2021 May 3-7; Austria.
+1. Odena, A. *et al.* [BUSTLE: Bottom-Up Program Synthesis Through Learning-Guided Exploration.](https://arxiv.org/abs/2007.14381) in *9th International Conference on Learning Representations*; 2021 May 3-7; Austria.
