@@ -50,6 +50,23 @@ Program weight: 3
 Program return type: int
 ```
 
+We could also try a more involved example in the string domain:
+```
+python synthesis.py --domain strings --example concatenate_3 --max-weight 5 
+
+Synthesis Log:
+- Extracted 13 constants from examples.
+- Searching level 2 with 13 primitives.
+- Searching level 3 with 79 primitives.
+- Searching level 4 with 79 primitives.
+
+Synthesis Results:
+- Program found in 1.9864s.
+- Program: Concat(x0, Concat(x1, x2))
+- Program weight: 5
+- Program return type: str
+```
+
 To add additional input-output examples, modify `examples.py`. Add a new key to the dictionary `example_set` and set the value to be a list of tuples.
 
 ## 🔎 Abstract Syntax Tree
@@ -85,7 +102,7 @@ source setup_jupyter.sh
 
 ## 🙏🏽 Acknowledgements
 
-I thank [Tyler Holloway](mailto:tylerholloway@g.harvard.edu), teaching fellow in CS252R, for her guidance in completing this implementation of bottom-up enumerative program synthesis.
+I thank [Tyler Holloway](mailto:tylerholloway@g.harvard.edu), teaching fellow in CS252R, for her guidance.
 
 ## 📫 Contact
 

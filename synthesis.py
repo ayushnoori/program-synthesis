@@ -30,7 +30,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Bottom-up enumerative synthesis in Python.")
 
     # define valid choices for the 'domain' argument
-    valid_domain_choices = ["arithmetic", "string"]
+    valid_domain_choices = ["arithmetic", "strings"]
 
     # add examples
     parser.add_argument('--domain', type=str, required=True, # default="arithmetic",
@@ -139,7 +139,7 @@ def run_synthesizer(args):
     # define operators
     if args.domain == "arithmetic":
         operators = arithmetic_operators
-    elif args.domain == "string":
+    elif args.domain == "strings":
         operators = string_operators
     else:
         raise Exception('Domain not recognized. Must be either "arithmetic" or "string".')
