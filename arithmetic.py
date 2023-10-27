@@ -13,15 +13,39 @@ class IntegerVariable:
     For example, if the input is [4, 5, 6] and the variable is the third element (i.e., 6), then position = 2.
     '''
     def __init__(self, position):
-        self.value = None           # value of the variable, initially None
-        self.position = position    # position of the variable in the arguments to program
+        # self.value = None           # value of the variable, initially None
+        self.position = position    # zero-indexed position of the variable in the arguments to program
         self.type = int             # type of the variable
 
-    def assign(self, value):
-        self.value = value
+    # def assign(self, value):
+    #     self.value = value
 
-    def evaluate(self):
-        return self.value
+    # def evaluate(self, input = None):
+    #     # check that variable has been assigned a value
+    #     if self.value is None:
+    #         raise ValueError(f"Variable {self.position} has not been assigned a value.")
+
+    #     return self.value
+
+    def evaluate(self, input = None):
+
+        # check that input is not None
+        if input is None:
+            raise ValueError("Input is None.")
+
+        # check that input is a list
+        if type(input) != list:
+            raise ValueError("Input is not a list.")
+
+        # check that input is not empty
+        if len(input) == 0:
+            raise ValueError("Input is empty.")
+
+        # check that position is valid
+        if self.position >= len(input):
+            raise ValueError(f"Position {self.position} is out of range for input of length {len(input)}.")
+
+        return input[self.position]
     
     def str(self):
         return f"x{self.position}"
@@ -34,7 +58,7 @@ class IntegerConstant:
         self.value = value  # value of the constant
         self.type = int     # type of the constant
 
-    def evaluate(self):
+    def evaluate(self, input = None):
         return self.value
     
     def str(self):
@@ -50,7 +74,7 @@ class Add:
         self.return_type = int          # return type
         self.weight = 1                 # weight
 
-    def evaluate(self, x, y):
+    def evaluate(self, x, y, input = None):
         return x + y
     
     def str(self, x, y):
@@ -66,7 +90,7 @@ class Subtract:
         self.return_type = int          # return type
         self.weight = 1                 # weight
 
-    def evaluate(self, x, y):
+    def evaluate(self, x, y, input = None):
         return x - y
     
     def str(self, x, y):
@@ -82,7 +106,7 @@ class Multiply:
         self.return_type = int          # return type
         self.weight = 1                 # weight
 
-    def evaluate(self, x, y):
+    def evaluate(self, x, y, input = None):
         return x * y
     
     def str(self, x, y):
@@ -98,7 +122,7 @@ class Divide:
         self.return_type = int          # return type
         self.weight = 1                 # weight
 
-    def evaluate(self, x, y):
+    def evaluate(self, x, y, input = None):
         try: # check for division by zero error
             return x / y
         except ZeroDivisionError:

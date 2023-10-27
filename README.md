@@ -49,6 +49,10 @@ python3 synthesizer.py --domain arithmetic --examples addition
 
 To add additional input-output examples, modify `examples.py`. Add a new key to the dictionary `example_set` and set the value to be a list of tuples.
 
+## 🔎 Abstract Syntax Tree
+
+The most important data structure in this implementation is the abstract syntax tree (AST). The AST is a tree representation of a program, where each node is either a primitive or a compound expression. The AST is represented by the `OperatorNode` class in `abstract_syntax_tree.py`. My AST implementation includes functions to recursively evaluate the operator and its operands, and also to generate a string representation of the program.
+
 ## 🔮 Virtual Environment
 
 To create a virtual environment, run:
