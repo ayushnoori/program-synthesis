@@ -1,8 +1,10 @@
-# Bottom-Up Enumerative Synthesis
+# Bottom-Up Enumerative Program Synthesis
+
+🚨🚨PLEASE DO NOT GRADE YET🚨🚨
 
 Completed for [CS252R: Program Synthesis](https://synthesis.metareflection.club/) at the Harvard John A. Paulson School of Engineering and Applied Sciences, taught Fall 2023 by Prof. Nada Amin.
 
-## 🛠️ Inductive Program Synthesis
+## 🛠️ Inductive Synthesis
 
 The following notes are adapted from [*Introduction to Program Synthesis*](http://people.csail.mit.edu/asolar/SynthesisCourse/TOC.htm) by Armando Solar-Lezama.
 
@@ -21,9 +23,12 @@ Synthesize(inputs, outputs):
 
 ## 👨🏽‍💻 Project Description
 
-Here, we implement the non-ML subset of BUSTLE, the algorithm proposed by Odena *et al.* (2021). 
+Here, we implement the non-ML subset of BUSTLE, the algorithm proposed by Odena *et al.* (2021). That is, we implement bottom-up enumerative search for simple compound expressions, excluding conditionals, recursion and loops.
+
+## 🙏🏽 Acknowledgements
+
+I thank [Tyler Holloway](mailto:tylerholloway@g.harvard.edu), teaching fellow in CS252R, for her guidance in completing this implementation of bottom-up enumerative program synthesis.
 
 ## 📖 References
 
 1. Odena, A. *et al.* BUSTLE: Bottom-Up Program Synthesis Through Learning-Guided Exploration. in *9th International Conference on Learning Representations*; 2021 May 3-7; Austria.
-
