@@ -23,10 +23,9 @@ Synthesize(inputs, outputs):
 
 Here, we implement the non-ML subset of BUSTLE, the algorithm proposed by Odena *et al.* (2021). That is, we implement bottom-up enumerative search for simple compound expressions, excluding conditionals, recursion and loops.
 
-To run the program, run `synthesizer.py` with the following arguments:
+To run the program, run `synthesis.py` with the following arguments:
 ```
-usage: synthesizer.py [-h] --domain {arithmetic,string} --examples {addition,subtraction,multiplication,division}
-                      [--max_weight MAX_WEIGHT]
+usage: synthesis.py [-h] --domain {arithmetic,string} --examples {addition,subtraction,multiplication,division} [--max_weight MAX_WEIGHT]
 
 Bottom-up enumerative synthesis in Python.
 
@@ -42,7 +41,7 @@ optional arguments:
 
 For example, to synthesize programs in the arithmetic domain from the addition input-output examples, run:
 ```
-python3 synthesizer.py --domain arithmetic --examples addition
+python3 synthesis.py --domain arithmetic --examples addition
 ```
 
 To add additional input-output examples, modify `examples.py`. Add a new key to the dictionary `example_set` and set the value to be a list of tuples.

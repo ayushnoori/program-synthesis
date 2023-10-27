@@ -4,7 +4,7 @@ Ayush Noori
 CS252R, Fall 2020
 
 Example of usage:
-python synthesizer.py --domain arithmetic --examples addition
+python synthesis.py --domain arithmetic --examples addition
 '''
 
 # load libraries
