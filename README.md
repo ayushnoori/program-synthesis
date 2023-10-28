@@ -1,3 +1,14 @@
+---
+title: Program Synthesis
+emoji: 🤗
+colorFrom: blue
+colorTo: green
+sdk: streamlit
+sdk_version: 1.19.0
+app_file: app.py
+pinned: false
+---
+
 # Bottom-Up Enumerative Program Synthesis
 
 Completed for [CS252R: Program Synthesis](https://synthesis.metareflection.club/) at the Harvard John A. Paulson School of Engineering and Applied Sciences, taught in Fall 2023 by Prof. Nada Amin.
