@@ -20,7 +20,7 @@ jobs:
       - name: Overwrite 'spaces' with 'main'
         run: |
           git fetch origin main:main
-          git reset --hard main   
+          git reset --hard main
 
       - name: Delete 'README.md'
         run: |
@@ -33,6 +33,8 @@ jobs:
       - name: Add all files and commit to 'spaces'
         run: |
           git add .
+          git config --global user.email "anoori@college.harvard.edu"
+          git config --global user.name "Ayush Noori"
           git commit -m "Sync main content to spaces"
         
       - name: Push to Hugging Face
