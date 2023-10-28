@@ -28,7 +28,7 @@ example_set = {
 
     # advanced string examples
     'concatenate_3': [(["a", "b", "c"], "abc"), (["d", "e", "f"], "def"), (["g", "h", "i"], "ghi")],
-
+    
     # custom user examples
 }
 
