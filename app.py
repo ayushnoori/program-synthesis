@@ -10,12 +10,12 @@ import time
 from arithmetic import *
 from strings import *
 from abstract_syntax_tree import *
-from examples import example_set, check_examples
-from synthesizer import 
+from examples import *
+from synthesis import *
 import config
 
 # write streamlit title
-st.title("Bottom-Up Enumerative Program Synthesis")
+st.title("Bottom-Up Program Synthesis")
 
 # create class to hold arguments instead of arg-parser
 class Args(object):
