@@ -19,8 +19,13 @@ jobs:
 
       - name: Overwrite 'spaces' with 'main'
         run: |
+<<<<<<< HEAD
           git fetch origin main:main
           git reset --hard main   
+=======
+          git checkout spaces
+          git reset --hard main          
+>>>>>>> 67bf615ef334b12d69576afc04631883865ad408
 
       - name: Delete 'README.md'
         run: |
