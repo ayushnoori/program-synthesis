@@ -1,0 +1,6 @@
+numpy
+argparse
+itertools
+time
+os
+pathlib
