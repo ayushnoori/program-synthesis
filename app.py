@@ -42,7 +42,7 @@ domain = st.selectbox("Domain", ["arithmetic", "strings"])
 max_weight = st.slider("Maximum Weight", 2, 10, 3)
 
 # example_keys = list(example_set.keys())
-custom_example = st.toggle("Custom Example", value = False)
+custom_example = st.checkbox("Use Custom Example", value = False)
 if custom_example:
     if domain == "arithmetic":
         default_example = "[([7, 2], 9), ([8, 1], 9), ([4, 6], 10), ([3, 9], 12), ([5, 8], 13)]"
