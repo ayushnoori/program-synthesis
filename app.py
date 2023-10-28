@@ -39,7 +39,7 @@ Select input-output examples as defined in `examples.py`, or define your own cus
 # max_weight = 3
 domain = st.selectbox("Domain", ["arithmetic", "strings"])
 examples_key = st.selectbox("Examples", example_set.keys())
-max_weight = st.slider("Max Weight", 2, 10, 3)
+max_weight = st.slider("Maximum Weight", 2, 10, 3)
 
 # retrieve selected input-output examples
 examples = example_set[examples_key]
