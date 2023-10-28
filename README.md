@@ -13,6 +13,14 @@ pinned: false
 
 Completed for [CS252R: Program Synthesis](https://synthesis.metareflection.club/) at the Harvard John A. Paulson School of Engineering and Applied Sciences, taught in Fall 2023 by Prof. Nada Amin.
 
+## 📢 Live Demonstration
+
+Live demonstration available at:
+
+<div align="center">
+<a href = 'https://huggingface.co/spaces/ayushnoori/program-synthesis'><strong>https://huggingface.co/spaces/ayushnoori/program-synthesis</strong></a>
+</div>
+
 ## 🛠️ Background
 
 The following notes are adapted from [*Introduction to Program Synthesis*](http://people.csail.mit.edu/asolar/SynthesisCourse/TOC.htm) by Armando Solar-Lezama.
@@ -84,7 +92,7 @@ Synthesis Results:
 
 To add additional input-output examples, modify `examples.py`. Add a new key to the dictionary `example_set` and set the value to be a list of tuples.
 
-## 🔎 Abstract Syntax Tree
+## 🔎 Algorithmic Description
 
 The most important data structure in this implementation is the abstract syntax tree (AST). The AST is a tree representation of a program, where each node is either a primitive or a compound expression. The AST is represented by the `OperatorNode` class in `abstract_syntax_tree.py`. My AST implementation includes functions to recursively evaluate the operator and its operands and also to generate a string representation of the program.
 
