@@ -49,7 +49,7 @@ if custom_example:
     else:
         default_example = '[(["a", "b"], "ab"), (["c", "d"], "cd"), (["e", "f"], "ef")]'
 
-    example_text = st.text_input(label = "Example", value = default_example)
+    example_text = st.text_input(label = "Provide Custom Example", value = default_example)
     examples = ast.literal_eval(example_text)
 
     if not isinstance(examples, list) or not all(isinstance(item, tuple) for item in examples):
@@ -58,7 +58,7 @@ if custom_example:
 
 else:
     example_keys = ['addition', 'subtraction', 'multiplication', 'division', 'concatenate', 'right', 'left']
-    examples_key = st.selectbox("Examples", example_keys)
+    examples_key = st.selectbox("Select Input-Output Examples", example_keys)
 
     # retrieve selected input-output examples
     examples = example_set[examples_key]
