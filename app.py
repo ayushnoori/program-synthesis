@@ -50,7 +50,7 @@ program_bank = extract_constants(examples)
 program_bank_str = [p.str() for p in program_bank]
 print("\nSynthesis Log:")
 print(f"- Extracted {len(program_bank)} constants from examples.")
-st.write(f"Extracted {len(program_bank)} constants from examples.")
+st.markdown(f"* Extracted {len(program_bank)} constants from examples.")
 
 # define operators
 if domain == "arithmetic":
@@ -69,7 +69,7 @@ for weight in range(2, max_weight):
 
     # print message
     print(f"- Searching level {weight} with {len(program_bank)} primitives.")
-    st.write(f"Searching level {weight} with {len(program_bank)} primitives.")
+    st.markdown(f"* Searching level {weight} with {len(program_bank)} primitives.")
 
     # iterate over each operator
     for op in operators:
