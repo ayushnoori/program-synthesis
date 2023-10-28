@@ -10,12 +10,32 @@ jobs:
   sync-to-hub:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout the 'spaces' branch
+        uses: actions/checkout@v3
         with:
+          ref: 'spaces'
           fetch-depth: 0
           lfs: true
+
+      - name: Overwrite 'spaces' with 'main'
+        run: |
+          git checkout spaces
+          git reset --hard main          
+
+      - name: Delete 'README.md'
+        run: |
+          rm -f README.md
+
+      - name: Rename 'spaces.md' to 'README.md'
+        run: |
+          mv spaces.md README.md
+
+      - name: Add all files and commit to 'spaces'
+        run: |
+          git add .
+          git commit -m "Sync main content to spaces"
         
       - name: Push to Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push https://ayushnoori:$HF_TOKEN@huggingface.co/spaces/ayushnoori/program-synthesis main
+        run: git push https://ayushnoori:$HF_TOKEN@huggingface.co/spaces/ayushnoori/program-synthesis spaces
