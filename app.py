@@ -45,7 +45,7 @@ max_weight = st.slider("Max Weight", 2, 10, 3)
 examples = example_set[examples_key]
 
 # extract constants from examples
-st.subheader("Synthesis Demonstration")
+st.subheader("Synthesis Steps")
 program_bank = extract_constants(examples)
 program_bank_str = [p.str() for p in program_bank]
 print("\nSynthesis Log:")
@@ -115,6 +115,7 @@ elapsed_time = round(end_time - start_time, 4)
 
 # check if program was found
 print("\nSynthesis Results:")
+st.subheader("Synthesis Results")
 if final_program is None:
     print(f"- Max weight of {max_weight} reached, no program found in {elapsed_time}s.")
 
@@ -126,9 +127,9 @@ else:
     print(f"- Program return type: {final_program.type.__name__}")
 
     st.write(f":white_check_mark: Program found in {elapsed_time}s.")
-    st.write(f"Program: {final_program.str()}")
-    st.write(f"Weight: {final_program.weight}")
-    st.write(f"Return Type: {final_program.type.__name__}")
+    st.markdown(f"Program: `{final_program.str()}`")
+    st.markdown(f"Weight: `{final_program.weight}`")
+    st.markdown(f"Return Type: `{final_program.type.__name__}`")
 
 st.header("🔎 Algorithm Details")
 
