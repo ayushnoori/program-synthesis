@@ -118,7 +118,7 @@ I thank [Tyler Holloway](mailto:tylerholloway@g.harvard.edu), teaching fellow in
 
 ## 📫 Contact
 
-Any questions? Please feel free to reach out to Ayush Noori at [anoori@college.harvard.edu](mailto:anoori@college.harvard.edu).
+All code is available via GitHub at [ayushnoori/program-synthesis](ayushnoori/program-synthesis). Any questions? Please feel free to reach out to Ayush Noori at [anoori@college.harvard.edu](mailto:anoori@college.harvard.edu).
 
 ## 📖 References
 
