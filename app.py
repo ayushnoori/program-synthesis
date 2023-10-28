@@ -5,6 +5,7 @@ import numpy as np
 import argparse
 import itertools
 import time
+import ast
 
 # import examples and synthesizer
 from arithmetic import *
@@ -24,13 +25,13 @@ Completed for [CS252R: Program Synthesis](https://synthesis.metareflection.club/
 st.header("👨🏽‍💻 Project Description")
 
 st.markdown('''
-Here, we implement the non-ML subset of BUSTLE, the algorithm proposed by [Odena *et al.* (2021)](https://arxiv.org/abs/2007.14381). That is, we implement bottom-up enumerative search for simple compound expressions, excluding conditionals, recursion, and loops. The implementation is generic and flexibly supports multiple target languages. Arithmetic and string manipulations are natively supported, defined in `arithmetic.py` and `string.py`, respectively.
+Here, we implement the non-ML subset of BUSTLE, the algorithm proposed by [Odena *et al.* (2021)](https://arxiv.org/abs/2007.14381). That is, we implement bottom-up enumerative search for simple compound expressions, excluding conditionals, recursion, and loops. The implementation is generic and flexibly supports multiple target languages. Arithmetic and string manipulations are natively supported, defined in [`arithmetic.py`](https://github.com/ayushnoori/program-synthesis/blob/main/arithmetic.py) and [`string.py`](https://github.com/ayushnoori/program-synthesis/blob/main/string.py), respectively.
 ''')
 
 st.subheader("Input-Output Examples")
 
 st.markdown('''
-Select input-output examples as defined in `examples.py`, or define your own custom examples. The examples are used to synthesize a satisfying program.
+Select input-output examples as defined in [`examples.py`](https://github.com/ayushnoori/program-synthesis/blob/main/examples.py), or define your own custom examples as a list of tuples. The examples are used to synthesize a satisfying program.
 ''')
 
 # define variables
@@ -38,11 +39,29 @@ Select input-output examples as defined in `examples.py`, or define your own cus
 # examples_key = "addition"
 # max_weight = 3
 domain = st.selectbox("Domain", ["arithmetic", "strings"])
-examples_key = st.selectbox("Examples", example_set.keys())
 max_weight = st.slider("Maximum Weight", 2, 10, 3)
 
-# retrieve selected input-output examples
-examples = example_set[examples_key]
+# example_keys = list(example_set.keys())
+custom_example = st.toggle("Custom Example", value = False)
+if custom_example:
+    if domain == "arithmetic":
+        default_example = "[([7, 2], 9), ([8, 1], 9), ([4, 6], 10), ([3, 9], 12), ([5, 8], 13)]"
+    else:
+        default_example = '[(["a", "b"], "ab"), (["c", "d"], "cd"), (["e", "f"], "ef")]'
+
+    example_text = st.text_input(label = "Example", value = default_example)
+    examples = ast.literal_eval(example_text)
+
+    if not isinstance(examples, list) or not all(isinstance(item, tuple) for item in examples):
+
+        st.write(":x: Invalid example format. Please enter a list of tuples.")
+
+else:
+    example_keys = ['addition', 'subtraction', 'multiplication', 'division', 'concatenate', 'right', 'left']
+    examples_key = st.selectbox("Examples", example_keys)
+
+    # retrieve selected input-output examples
+    examples = example_set[examples_key]
 
 # extract constants from examples
 st.subheader("Synthesis Steps")
@@ -134,9 +153,9 @@ else:
 st.header("🔎 Algorithm Details")
 
 st.markdown('''
-The most important data structure in this implementation is the abstract syntax tree (AST). The AST is a tree representation of a program, where each node is either a primitive or a compound expression. The AST is represented by the `OperatorNode` class in `abstract_syntax_tree.py`. My AST implementation includes functions to recursively evaluate the operator and its operands and also to generate a string representation of the program.
+The most important data structure in this implementation is the abstract syntax tree (AST). The AST is a tree representation of a program, where each node is either a primitive or a compound expression. The AST is represented by the `OperatorNode` class in [`abstract_syntax_tree.py`](https://github.com/ayushnoori/program-synthesis/blob/main/abstract_syntax_tree.py). My AST implementation includes functions to recursively evaluate the operator and its operands and also to generate a string representation of the program.
 
-At program evaluation time, the AST is evaluated from the bottom up. That is, the operands are evaluated first, and then the operator is evaluated on the operands. This is implemented in the `evaluate` method of the `OperatorNode` class. In the case of integers, variable inputs are represented by the `IntegerVariable` class in `arithmetic.py`. When input is not `None`, input type checking and validation is performed by the `evaluate` function in this class.
+At program evaluation time, the AST is evaluated from the bottom up. That is, the operands are evaluated first, and then the operator is evaluated on the operands. This is implemented in the `evaluate` method of the `OperatorNode` class. In the case of integers, variable inputs are represented by the `IntegerVariable` class in [`arithmetic.py`](https://github.com/ayushnoori/program-synthesis/blob/main/arithmetic.py). When input is not `None`, input type checking and validation is performed by the `evaluate` function in this class.
 
 The pseudocode for the bottom-up synthesis algorithm is reproduced below from [Odena *et al.* (2021)](https://arxiv.org/abs/2007.14381):
 ''')
