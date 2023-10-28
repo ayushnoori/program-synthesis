@@ -30,30 +30,35 @@ Here, we implement the non-ML subset of BUSTLE, the algorithm proposed by [Odena
 st.subheader("Input-Output Examples")
 
 st.markdown('''
-Select input-output examples as defined in `examples.py`, or define your own custom examples. The examples are used to synthesize a program that satisfies the examples.
+Select input-output examples as defined in `examples.py`, or define your own custom examples. The examples are used to synthesize a satisfying program.
 ''')
 
 # define variables
-domain = "arithmetic"
-examples_key = "addition"
-max_weight = 3
+# domain = "arithmetic"
+# examples_key = "addition"
+# max_weight = 3
+domain = st.selectbox("Domain", ["arithmetic", "strings"])
+examples_key = st.selectbox("Examples", example_set.keys())
+max_weight = st.slider("Max Weight", 2, 10, 3)
 
 # retrieve selected input-output examples
 examples = example_set[examples_key]
 
 # extract constants from examples
+st.subheader("Synthesis Demonstration")
 program_bank = extract_constants(examples)
 program_bank_str = [p.str() for p in program_bank]
 print("\nSynthesis Log:")
 print(f"- Extracted {len(program_bank)} constants from examples.")
+st.write(f"Extracted {len(program_bank)} constants from examples.")
 
 # define operators
 if domain == "arithmetic":
     operators = arithmetic_operators
 elif domain == "strings":
     operators = string_operators
-else:
-    raise Exception('Domain not recognized. Must be either "arithmetic" or "string".')
+# else:
+#     raise Exception('Domain not recognized. Must be either "arithmetic" or "string".')
 
 # define final program
 final_program = None
@@ -64,6 +69,7 @@ for weight in range(2, max_weight):
 
     # print message
     print(f"- Searching level {weight} with {len(program_bank)} primitives.")
+    st.write(f"Searching level {weight} with {len(program_bank)} primitives.")
 
     # iterate over each operator
     for op in operators:
@@ -111,11 +117,18 @@ elapsed_time = round(end_time - start_time, 4)
 print("\nSynthesis Results:")
 if final_program is None:
     print(f"- Max weight of {max_weight} reached, no program found in {elapsed_time}s.")
+
+    st.write(f":x: Max weight of {max_weight} reached, no program found in {elapsed_time}s.")
 else:
     print(f"- Program found in {elapsed_time}s.")
     print(f"- Program: {final_program.str()}")
     print(f"- Program weight: {final_program.weight}")
     print(f"- Program return type: {final_program.type.__name__}")
+
+    st.write(f":white_check_mark: Program found in {elapsed_time}s.")
+    st.write(f"Program: {final_program.str()}")
+    st.write(f"Weight: {final_program.weight}")
+    st.write(f"Return Type: {final_program.type.__name__}")
 
 st.header("🔎 Algorithm Details")
 
