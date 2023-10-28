@@ -19,7 +19,6 @@ jobs:
 
       - name: Overwrite 'spaces' with 'main'
         run: |
-          git pull 
           git fetch origin main:main
           git reset --hard main
 
@@ -41,4 +40,4 @@ jobs:
       - name: Push to Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push https://ayushnoori:$HF_TOKEN@huggingface.co/spaces/ayushnoori/program-synthesis spaces
+        run: git push https://ayushnoori:$HF_TOKEN@huggingface.co/spaces/ayushnoori/program-synthesis spaces --force
