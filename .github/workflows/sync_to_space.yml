@@ -19,6 +19,7 @@ jobs:
 
       - name: Overwrite 'spaces' with 'main'
         run: |
+          git pull 
           git fetch origin main:main
           git reset --hard main
 
